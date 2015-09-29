@@ -1,0 +1,40 @@
+{
+  "name": "Sample Extension Commands extension",
+  "description": "Press Ctrl+F to open the browser action popup, press Ctrl+Shift+Y to send an event (Command+Shift+Y on a Mac).",
+  "version": "1.0",
+  "permissions": [
+    "activeTab", "notifications"
+  ],
+  "manifest_version": 2,
+  "background": {
+    "scripts": ["background.js"],
+    "persistent": false
+  },
+  "browser_action": {
+    "default_popup": "popup.htm"
+  },
+	"commands": {
+		"toggle-feature": {
+			"suggested_key": { "default": "Ctrl+Shift+1" },
+			"description": "Send a 'toggle-feature' event to the extension"
+		},
+		"copy-intercept": {
+			"suggested_key": { "default": "Ctrl+C" },
+			"description": "Intercept Copy"
+		},
+		"toggle-feature-two": {
+			"suggested_key": { "default": "Ctrl+Shift+2" },
+			"description": "Send a 'toggle-feature' event to the extension"
+		},
+		"toggle-feature-three": {
+			"suggested_key": { "default": "Ctrl+Shift+3" },
+			"description": "Send a 'toggle-feature' event to the extension"
+		}
+	},
+	"content_scripts": [
+		{
+			"matches": ["<all_urls>"],
+			"js": ["jquery.js", "copy.js"]
+		}
+	]
+}
